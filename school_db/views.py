@@ -59,7 +59,16 @@ SELECT `school_db_student`.`id`,
 # Print out each student's full name and gpa to the terminal
 def problem_one(request):
 
+    gpa = 3.0
+    studentsWithGpaGreaterThan = Student.objects.filter()
+
+    for student in studentsWithGpaGreaterThan:
+      print(
+            f'First Name: {student.first_name, student.last_name} GPA: {student.gpa}')
+
     return complete(request)
+
+
 
 
 # Supporting Query Method Documentation:
@@ -98,8 +107,12 @@ SELECT `school_db_student`.`id`,
 # Print out the instructor's full name and hire date to the terminal
 def problem_two(request):
 
-    return complete(request)
+    instructors = Instructor.objects.filter()
 
+    for instructor in instructors:
+      print(
+            f'First Name: {instructor.first_name} Last Name: {instructor.last_name} Hire Date: {instructor.hire_date}')
+      return complete(request)
 
 # Supporting Query Method Documentation:
 """
@@ -138,7 +151,12 @@ SELECT `school_db_instructor`.`id`,
 # Print the instructors name and courses that he belongs to in the terminal
 # (Do not hard code his name in the print)
 def problem_three(request):
+    
+    instuctors = Course.objects.filter()
 
+    for course in instuctors:
+      print(
+            f'First Name: {Instructor.first_name} Last Name: {Instructor.last_name} Course: {course.name}')
     return complete(request)
 
 
@@ -226,9 +244,11 @@ SELECT COUNT(*) AS `__count`
 
 # Create a new student in the database. Use your information!
 # Print the new student's id, full name, year, and gpa to the terminal
-# NOTE every time you execute this function a duplicate student will be created with a different primary key number
+# NOTE every time you execute this function a duplic13ate student will be created with a different primary key number
 def problem_five(request):
 
+    new_student = Student.objects.create(first_name="Roger", last_name="DangerField", gpa=3.2)
+    new_student.save(force_insert=True)
     return complete(request)
 
 
