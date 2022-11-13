@@ -251,7 +251,7 @@ SELECT COUNT(*) AS `__count`
 # NOTE every time you execute this function a duplic13ate student will be created with a different primary key number
 def problem_five(request):
 
-    new_student = Student.objects.create(id=, first_name="", last_name="", year=int, gpa=float)
+    new_student = Student.objects.create(id=id, first_name="", last_name="", year=int, gpa=float)
     new_student.save(force_insert=True)
     print(
           f'Id: {new_student.id} Full Name: {new_student.first_name} {new_student.last_name} Year: {new_student.year} GPA: {new_student.gpa} ')
