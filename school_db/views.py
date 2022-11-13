@@ -202,6 +202,10 @@ SELECT `school_db_instructor`.`id`,
 
 # Get the count of students, courses, and instructors and print them in the terminal
 def problem_four(request):
+    how_many = Student.objects.count()
+    print(
+        f'{how_many}, {how_many}, {how_many}'
+      )
 
     return complete(request)
 
@@ -247,10 +251,13 @@ SELECT COUNT(*) AS `__count`
 # NOTE every time you execute this function a duplic13ate student will be created with a different primary key number
 def problem_five(request):
 
-    new_student = Student.objects.create(first_name="Roger", last_name="DangerField", gpa=3.2)
+    new_student = Student.objects.create(id=, first_name="", last_name="", year=int, gpa=float)
     new_student.save(force_insert=True)
+    print(
+          f'Id: {new_student.id} Full Name: {new_student.first_name} {new_student.last_name} Year: {new_student.year} GPA: {new_student.gpa} ')
     return complete(request)
 
+            
 
 # Supporting Query Method Documentation:
 """
@@ -284,8 +291,11 @@ def problem_six(request):
     # Make sure to set this equal to the primary key of the row you just created!
     student_id = 11
 
+    student = Student.objects.filter().update(pk=student_id)
+    for student in student_id:
+      print(
+          f' Full Name: {student.first_name} {student.last_name} GPA: {student.gpa} ')
     return complete(request)
-
 
 # Supporting Query Method Documentation:
 """
@@ -331,10 +341,11 @@ def problem_seven(request):
     # Make sure to set this equal to the primary key of the row you just created!
     student_id = 11
 
+
     try:
         student = Student.objects.get(pk=student_id)
     except ObjectDoesNotExist:
-        print('Great! It failed and couldnt find the object because we deleted it!')
+        print(f'Great! {student} It failed and couldnt find the object because we deleted it!')
 
     return complete(request)
 
@@ -386,7 +397,11 @@ SELECT `school_db_student`.`id`,
 # Find all of the instructors that only belong to a single course
 # Print out the instructors full name and number of courses to the console
 def bonus_problem(request):
-
+    single_course_instructors  = Instructor.objects.filter(Course.instructor == 1).aggregate(Instructor("fist_name"), Instructor("last_name"), Course("name"))
+    for instructor in single_course_instructors:
+      print(
+        f'Full Name: {instructor.first_name, instructor.last_name} Courses: {Course.name}'
+      )
     return complete(request)
 
 
